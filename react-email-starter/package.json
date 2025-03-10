@@ -1,0 +1,25 @@
+{
+  "name": "react-email-starter",
+  "version": "0.1.9",
+  "private": true,
+  "description": "A live preview right in your browser so you don't need to keep sending real emails during development.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "email build",
+    "dev": "email dev",
+    "export": "email export"
+  },
+  "dependencies": {
+    "@react-email/components": "0.0.33",
+    "react-dom": "19.0.0",
+    "react": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.1",
+    "react-email": "3.0.7"
+  }
+}
