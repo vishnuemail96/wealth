@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import useFetch from "@/hooks/use-fetch";
 import { toast } from "sonner";
@@ -26,7 +27,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { createAccount } from "@/actions/dashboard";
 import { accountSchema } from "@/app/lib/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 export function CreateAccountDrawer({ children }) {
   const [open, setOpen] = useState(false);
