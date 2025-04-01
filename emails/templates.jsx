@@ -11,7 +11,7 @@ import {
 
 export default function EmailTemplate({
   userName = "",
-  type = "monthly-report",
+  type = "budget-alert",
   data = {}
 }) {
   if (type === "monthly-report") {
