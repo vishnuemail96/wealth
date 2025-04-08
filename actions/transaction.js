@@ -1,11 +1,11 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
-import { db } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import aj from "@/lib/arcjet";
+import { db } from "@/lib/prisma";
 import { request } from "@arcjet/next";
+import { auth } from "@clerk/nextjs/server";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { revalidatePath } from "next/cache";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -256,15 +256,16 @@ export async function scanReceipt(file) {
 
       If its not a recipt, return an empty object
     `;
-
     const result = await model.generateContent([
       {
         inlineData: {
-          data: base64String,
-          mimeType: file.type,
+          data: base64String.replace(/^data:.+;base64,/, ""), // 🧼 clean base64
+          mimeType: file.type, // 📷 like "image/png"
         },
       },
-      prompt,
+      {
+        text: prompt, // 💬 wrap prompt properly
+      },
     ]);
 
     const response = await result.response;
